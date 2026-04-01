@@ -3,22 +3,22 @@ package com.shapes;
 class Manali extends Hillstations {
 
     void famousfood() {
-        System.out.println("Manali: Siddu");
+        System.out.println("Manali: momos");
     }
 
     void famousfor() {
-        System.out.println("Manali: Snow mountains");
+        System.out.println("Manali: Snow  mountains and white rabbits");
     }
 }
 
 class Mussoorie extends Hillstations {
 
     void famousfood() {
-        System.out.println("Mussoorie: Momos");
+        System.out.println("Mussoorie: jhol momos");
     }
 
     void famousfor() {
-        System.out.println("Mussoorie: Hills and waterfalls");
+        System.out.println("Mussoorie: hills and waterfalls");
     }
 }
 
@@ -29,7 +29,7 @@ class Gulmarg extends Hillstations {
     }
 
     void famousfor() {
-        System.out.println("Gulmarg: Skiing");
+        System.out.println("Gulmarg: adventures and snow mountains ");
     }
 
 
