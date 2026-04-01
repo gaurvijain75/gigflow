@@ -3,19 +3,19 @@ package assignment4;
 import java.io.*;
 import java.util.*;
 
-class InvalidAmountException extends Exception {
+class invalidAmountException extends Exception {
     public InvalidAmountException(String msg) {
         super(msg);
     }
 }
 
-class InvalidCIDException extends Exception {
+class invalidCIDException extends Exception {
     public InvalidCIDException(String msg) {
         super(msg);
     }
 }
 
-class InsufficientBalanceException extends Exception {
+class insufficientBalanceException extends Exception {
     public InsufficientBalanceException(String msg) {
         super(msg);
     }
@@ -47,7 +47,7 @@ public class Main {
             int cid = sc.nextInt();
 
             if (cid < 1 || cid > 20) {
-                throw new InvalidCIDException("CID of the employee must be between 1 and 20");
+                throw new invalidCIDException("CID of the employee must be between 1 and 20");
             }
 
             System.out.println("Enter Customer Name:");
@@ -57,7 +57,7 @@ public class Main {
             double amount = sc.nextDouble();
 
             if (amount < 1000) {
-                throw new InvalidAmountException("Minimum amount should be 1000 in acc");
+                throw new invalidAmountException("Minimum amount should be 1000 in acc");
             }
 
             Customer c = new Customer(cid, cname, amount);
@@ -66,11 +66,11 @@ public class Main {
             double w = sc.nextDouble();
 
             if (w > amount) {
-                throw new InsufficientBalanceException("Insufficient balance in acc");
+                throw new insufficientBalanceException("Insufficient balance in acc");
             }
 
             if (w < 0) {
-                throw new InvalidAmountException("Amount should always be positive");
+                throw new invalidAmountException("Amount should always be positive");
             }
 
             amount = amount - w;
@@ -82,7 +82,7 @@ public class Main {
 
             System.out.println("Record stored successfully!");
 
-        } catch (InvalidCIDException | InvalidAmountException | InsufficientBalanceException e) {
+        } catch (invalidCIDException | invalidAmountException | insufficientBalanceException e) {
             System.out.println("Error: " + e.getMessage());
         } catch (IOException e) {
             System.out.println("File Error");
