@@ -1,0 +1,73 @@
+package com.shapes;
+
+class Shapes {
+    double length, breadth, radius;
+
+    // Constructor Overloading
+
+    // Rectangle constructor
+    Shapes(double l, double b) {
+        length = l;
+        breadth = b;
+    }
+
+    // Circle constructor
+    Shapes(double r) {
+        radius = r;
+    }
+
+    // Square constructor
+    Shapes(int side) {
+        length = side;
+    }
+
+    // Method Overloading
+
+    void area(double l, double b) {
+        System.out.println("Area of Rectangle = " + (l * b));
+    }
+
+    void area(double r) {
+        System.out.println("Area of Circle = " + (3.14 * r * r));
+    }
+
+    void area(int side) {
+        System.out.println("Area of Square = " + (side * side));
+    }
+}
+
+
+package com.shapes;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        // Rectangle
+        System.out.println("Enter length and breadth of rectangle:");
+        double l = sc.nextDouble();
+        double b = sc.nextDouble();
+
+        Shapes s1 = new Shapes(l, b);
+        s1.area(l, b);
+
+        // Circle
+        System.out.println("Enter radius of circle:");
+        double r = sc.nextDouble();
+
+        Shapes s2 = new Shapes(r);
+        s2.area(r);
+
+        // Square
+        System.out.println("Enter side of square:");
+        int side = sc.nextInt();
+
+        Shapes s3 = new Shapes(side);
+        s3.area(side);
+
+        sc.close();
+    }
+}
