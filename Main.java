@@ -47,7 +47,7 @@ public class Main {
             int cid = sc.nextInt();
 
             if (cid < 1 || cid > 20) {
-                throw new InvalidCIDException("CID must be between 1 and 20");
+                throw new InvalidCIDException("CID of the employee must be between 1 and 20");
             }
 
             System.out.println("Enter Customer Name:");
@@ -57,7 +57,7 @@ public class Main {
             double amount = sc.nextDouble();
 
             if (amount < 1000) {
-                throw new InvalidAmountException("Minimum amount should be 1000");
+                throw new InvalidAmountException("Minimum amount should be 1000 in acc");
             }
 
             Customer c = new Customer(cid, cname, amount);
@@ -66,11 +66,11 @@ public class Main {
             double w = sc.nextDouble();
 
             if (w > amount) {
-                throw new InsufficientBalanceException("Insufficient balance");
+                throw new InsufficientBalanceException("Insufficient balance in acc");
             }
 
             if (w < 0) {
-                throw new InvalidAmountException("Amount should be positive");
+                throw new InvalidAmountException("Amount should always be positive");
             }
 
             amount = amount - w;
