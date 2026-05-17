@@ -1,5 +1,5 @@
 import mongoose, { Schema } from 'mongoose'
-import { ILead } from '..'
+import type { ILead } from '../types/index_type'
 
 const LeadSchema = new Schema<ILead>(
   {

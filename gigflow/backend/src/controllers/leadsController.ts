@@ -1,7 +1,7 @@
 import { Response } from 'express'
 import { FilterQuery } from 'mongoose'
 import Lead from '../models/Lead'
-import { AuthRequest, ILead, LeadQuery } from '..'
+import type { AuthRequest, ILead, LeadQuery } from '../types/index_type'
 
 // @desc    Get all leads with filters, search, sort, pagination
 // @route   GET /api/leads

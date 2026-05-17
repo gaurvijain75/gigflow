@@ -1,6 +1,6 @@
 import { Response, NextFunction } from 'express'
 import jwt from 'jsonwebtoken'
-import { AuthRequest, UserPayload, UserRole } from '..'
+import type { AuthRequest, UserPayload, UserRole } from '../types/index_type'
 
 // Verify JWT token
 export const protect = (
