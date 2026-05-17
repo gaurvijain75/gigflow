@@ -6,12 +6,14 @@ import { leadsService } from '../services/leadsService'
 import { StatsData } from '../types'
 import Spinner from '../components/ui/Spinner'
 import { useAuth } from '../context/AuthContext'
+import { useTheme } from '../context/ThemeContext'
 
 const STATUS_COLORS = ['#3B82F6', '#F59E0B', '#10B981', '#EF4444']
 const SOURCE_COLORS = ['#8B5CF6', '#EC4899', '#14B8A6']
 
 const Dashboard = () => {
   const { user } = useAuth()
+  const { isDark } = useTheme()
   const navigate = useNavigate()
   const [stats, setStats] = useState<StatsData | null>(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -52,34 +54,33 @@ const Dashboard = () => {
 
   const quickActions = [
     { label: 'View All Leads', icon: Eye, color: 'bg-blue-50 text-blue-600', action: () => navigate('/leads') },
-     { label: 'Add New Lead', icon: UserPlus, color: 'bg-green-50 text-green-600', action: () => navigate('/leads?action=add') },
-   
+    { label: 'Add New Lead', icon: UserPlus, color: 'bg-green-50 text-green-600', action: () => navigate('/leads?action=add') },
   ]
 
   return (
-    <div className="p-8">
+    <div className={`p-8 min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
-        <p className="text-gray-500 mt-1">Track your lead management performance</p>
+        <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>Dashboard Overview</h2>
+        <p className={`mt-1 ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>Track your lead management performance</p>
       </div>
 
       {/* Stats Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
         {statCards.map((card) => (
-          <div key={card.label} className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+          <div key={card.label} className={`rounded-2xl border p-5 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
             <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${card.color}`}>
               <card.icon className="w-6 h-6" />
             </div>
-            <p className="text-sm text-gray-500">{card.label}</p>
-            <p className="text-3xl font-bold text-gray-900 mt-1">{card.value}</p>
+            <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'}`}>{card.label}</p>
+            <p className={`text-3xl font-bold mt-1 ${isDark ? 'text-white' : 'text-gray-900'}`}>{card.value}</p>
           </div>
         ))}
       </div>
 
       {/* Charts */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-          <h3 className="text-base font-semibold text-gray-800 mb-4">Leads by Status</h3>
+        <div className={`rounded-2xl border p-6 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+          <h3 className={`text-base font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-800'}`}>Leads by Status</h3>
           {statusData.length === 0 ? (
             <div className="flex items-center justify-center h-48 text-gray-400 text-sm">No data yet</div>
           ) : (
@@ -90,23 +91,23 @@ const Dashboard = () => {
                     <Cell key={index} fill={STATUS_COLORS[index % STATUS_COLORS.length]} />
                   ))}
                 </Pie>
-                <Tooltip />
-                <Legend />
+                <Tooltip contentStyle={{ backgroundColor: isDark ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', color: isDark ? '#fff' : '#000' }} />
+                <Legend wrapperStyle={{ color: isDark ? '#9ca3af' : '#374151' }} />
               </PieChart>
             </ResponsiveContainer>
           )}
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-          <h3 className="text-base font-semibold text-gray-800 mb-4">Leads by Source</h3>
+        <div className={`rounded-2xl border p-6 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+          <h3 className={`text-base font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-800'}`}>Leads by Source</h3>
           {sourceData.length === 0 ? (
             <div className="flex items-center justify-center h-48 text-gray-400 text-sm">No data yet</div>
           ) : (
             <ResponsiveContainer width="100%" height={220}>
               <BarChart data={sourceData}>
-                <XAxis dataKey="name" tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} />
-                <Tooltip />
+                <XAxis dataKey="name" tick={{ fontSize: 12, fill: isDark ? '#9ca3af' : '#374151' }} />
+                <YAxis tick={{ fontSize: 12, fill: isDark ? '#9ca3af' : '#374151' }} />
+                <Tooltip contentStyle={{ backgroundColor: isDark ? '#1f2937' : '#fff', border: 'none', borderRadius: '8px', color: isDark ? '#fff' : '#000' }} />
                 <Bar dataKey="value" radius={[4, 4, 0, 0]}>
                   {sourceData.map((_, index) => (
                     <Cell key={index} fill={SOURCE_COLORS[index % SOURCE_COLORS.length]} />
@@ -119,19 +120,19 @@ const Dashboard = () => {
       </div>
 
       {/* Quick Actions */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-        <h3 className="text-base font-semibold text-gray-800 mb-4">Quick Actions</h3>
+      <div className={`rounded-2xl border p-6 shadow-sm ${isDark ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-100'}`}>
+        <h3 className={`text-base font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-800'}`}>Quick Actions</h3>
         <div className="grid grid-cols-2 gap-4">
           {quickActions.map((action) => (
             <button
               key={action.label}
               onClick={action.action}
-              className="flex flex-col items-center gap-3 p-5 rounded-xl border border-gray-100 hover:bg-gray-50 transition-colors"
+              className={`flex flex-col items-center gap-3 p-5 rounded-xl border transition-colors ${isDark ? 'border-gray-700 hover:bg-gray-700' : 'border-gray-100 hover:bg-gray-50'}`}
             >
               <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${action.color}`}>
                 <action.icon className="w-6 h-6" />
               </div>
-              <span className="text-sm font-medium text-gray-700">{action.label}</span>
+              <span className={`text-sm font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{action.label}</span>
             </button>
           ))}
         </div>
