@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Lead } from '../types'
 import { leadsService } from '../services/leadsService'
+import type { LeadStatus, LeadSource } from '../types'
 
 interface LeadFormProps {
   lead?: Lead | null
@@ -9,11 +10,12 @@ interface LeadFormProps {
   onSuccess: () => void
 }
 
+
 interface FormData {
   name: string
   email: string
-  status: string
-  source: string
+  status: LeadStatus
+  source: LeadSource
 }
 
 const LeadForm = ({ lead, onClose, onSuccess }: LeadFormProps) => {
