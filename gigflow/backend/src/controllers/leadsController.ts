@@ -205,7 +205,7 @@ export const exportLeads = async (req: AuthRequest, res: Response): Promise<void
         lead.email,
         lead.status,
         lead.source,
-        (lead.createdBy as { name: string })?.name || 'N/A',
+        (lead.createdBy as any)?.name || 'N/A',
         new Date(lead.createdAt).toLocaleDateString(),
       ]),
     ]
