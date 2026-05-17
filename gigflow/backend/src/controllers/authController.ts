@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
-import type { UserPayload } from '../types/index'
+import type { UserPayload } from '../types'
 
 const generateToken = (payload: UserPayload): string => {
   return jwt.sign(payload, process.env.JWT_SECRET as string, {
