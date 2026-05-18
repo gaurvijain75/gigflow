@@ -1,7 +1,26 @@
 # GigFlow – Smart Leads Dashboard
 
-A full-stack Lead Management Dashboard built with the MERN stack.
+> A smart, role-based Lead Management Dashboard built for sales teams to track, manage, and analyze their leads efficiently.
 
+## 🎯 About The Project
+
+GigFlow is a full-stack Lead Management System built with the MERN stack. It helps sales teams manage their leads in one place — track status, filter by source, search by name, and visualize performance through charts.
+
+**Why GigFlow?**
+- Sales teams waste time on messy Excel sheets
+- No visibility into team performance
+- No role-based access — everyone sees everything
+
+GigFlow solves this by providing a clean dashboard where admins see everything and sales users only see their own leads.
+
+## 🔗 Live Demo
+- **Frontend:** https://gigflow-livid-seven.vercel.app
+- **Backend API:** https://gigflow-gcqo.onrender.com/health
+
+## 👤 Test Credentials
+- **Admin:** admin@gigflow.com / admin123
+- **Sales:** sales@gigflow.com / sales123
+- 
 ## 🚀 Tech Stack
 
 - **Frontend:** React.js, TypeScript, TailwindCSS, Recharts
