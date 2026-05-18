@@ -20,7 +20,7 @@ GigFlow solves this by providing a clean dashboard where admins see everything a
 ## 👤 Test Credentials
 - **Admin:** admin@gigflow.com / admin123
 - **Sales:** sales@gigflow.com / sales123
-- 
+  
 ## 🚀 Tech Stack
 
 - **Frontend:** React.js, TypeScript, TailwindCSS, Recharts
