@@ -197,8 +197,7 @@ const Leads = () => {
       {/* View Lead Modal */}
       {viewLead && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className={`rounded-2xl p-6 w-full max-w-md shadow-xl ${isDark ? 'bg-gray-800' : 'bg-white'}`}>
-            <div className="flex justify-between items-center mb-5">
+<div className={`rounded-2xl p-6 w-full max-w-md shadow-xl ${isDark ? 'bg-gray-700 border border-gray-600' : 'bg-white'}`}>            <div className="flex justify-between items-center mb-5">
               <h2 className={`text-lg font-semibold ${isDark ? 'text-white' : 'text-gray-800'}`}>Lead Details</h2>
               <button onClick={() => setViewLead(null)} className="text-gray-400 hover:text-gray-600 text-xl">✕</button>
             </div>
