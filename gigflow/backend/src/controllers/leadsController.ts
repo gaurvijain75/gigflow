@@ -2,7 +2,7 @@ import { Response } from 'express'
 import { FilterQuery } from 'mongoose'
 import Lead from '../models/Lead'
 import type { AuthRequest, ILead, LeadQuery } from '../types'
-
+import { Types } from 'mongoose'
 // @desc    Get all leads with filters, search, sort, pagination
 // @route   GET /api/leads
 // @access  Private
@@ -161,7 +161,7 @@ export const deleteLead = async (req: AuthRequest, res: Response): Promise<void>
 // @access  Private
 export const getLeadStats = async (req: AuthRequest, res: Response): Promise<void> => {
   try {
-    const { Types } = await import('mongoose')
+    
     const matchStage = req.user?.role === 'sales' 
       ? { createdBy: new Types.ObjectId(req.user.id) } 
       : {}
@@ -205,7 +205,7 @@ export const exportLeads = async (req: AuthRequest, res: Response): Promise<void
         lead.email,
         lead.status,
         lead.source,
-        (lead.createdBy as any)?.name || 'N/A',
+        (lead.createdBy as any)?.name || 'N/A',// createdBy is populated by Mongoose at runtime, type cast needed
         new Date(lead.createdAt).toLocaleDateString(),
       ]),
     ]
