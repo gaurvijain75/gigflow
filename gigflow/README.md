@@ -82,17 +82,30 @@ JWT_EXPIRES_IN=7d
 NODE_ENV=development
 FRONTEND_URL=http://localhost:5173
 ```
+## 🗄️ Database Schema
+
+### User
+- name, email, password (hashed), role (admin/sales), createdAt
+
+### Lead  
+- name, email, status (New/Contacted/Qualified/Lost), source (Website/Instagram/Referral), createdBy (ref: User), createdAt
 
 ## 📡 API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | /api/auth/register | Register user |
-| POST | /api/auth/login | Login user |
-| GET | /api/auth/me | Get current user |
-| GET | /api/leads | Get all leads |
-| POST | /api/leads | Create lead |
-| PUT | /api/leads/:id | Update lead |
-| DELETE | /api/leads/:id | Delete lead |
-| GET | /api/leads/stats | Dashboard stats |
-| GET | /api/leads/export | Export CSV |
+### Authentication
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|--------|
+| POST | /api/auth/register | Register user | Public |
+| POST | /api/auth/login | Login user | Public |
+| GET | /api/auth/me | Get current user | Private |
+
+### Leads
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|--------|
+| GET | /api/leads | Get all leads with filters | Private |
+| POST | /api/leads | Create lead | Private |
+| GET | /api/leads/:id | Get single lead | Private |
+| PUT | /api/leads/:id | Update lead | Private |
+| DELETE | /api/leads/:id | Delete lead | Admin only |
+| GET | /api/leads/stats | Dashboard stats | Private |
+| GET | /api/leads/export | Export CSV | Private |
